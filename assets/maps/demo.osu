@@ -1,0 +1,27 @@
+osu file format v14
+
+[General]
+AudioFilename:demo.mp3
+Mode:0
+
+[Metadata]
+Title:Demo Song
+Artist:Demo Artist
+Creator:Test Mapper
+Version:Normal
+
+[Difficulty]
+CircleSize:4
+OverallDifficulty:5
+ApproachRate:5
+SliderMultiplier:1.4
+SliderTickRate:1
+
+[TimingPoints]
+0,500,4,1,0,100,1,0
+
+[HitObjects]
+256,192,1000,1,0,0:0:0:0:
+128,192,1500,1,0,0:0:0:0:
+256,192,2000,2,0,B|356:192,1,140
+256,192,3000,8,0,4000

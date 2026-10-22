@@ -1,0 +1,14 @@
+{
+  "name": "osu-standard-sonolus",
+  "version": "1.0.0",
+  "description": "osu! Standard engine for Sonolus",
+  "main": "src/server/index.js",
+  "scripts": {
+    "test": "node --test",
+    "parse": "node src/server/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

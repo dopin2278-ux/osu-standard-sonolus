@@ -1,0 +1,18 @@
+{
+  "name": "sonolus.js-template-js",
+  "version": "1.5.2",
+  "description": "Sonolus.js Template (JS)",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev-play": "sonolus-cli --dev ./play",
+    "dev-watch": "sonolus-cli --dev ./watch",
+    "dev-preview": "sonolus-cli --dev ./preview",
+    "dev-tutorial": "sonolus-cli --dev ./tutorial",
+    "build": "sonolus-cli --build ./play && sonolus-cli --build ./watch && sonolus-cli --build ./preview && sonolus-cli --build ./tutorial"
+  },
+  "devDependencies": {
+    "@sonolus/core": "~7.15.3",
+    "@sonolus/sonolus.js": "~9.7.3"
+  }
+}
