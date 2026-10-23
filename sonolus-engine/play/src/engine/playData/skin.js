@@ -1,3 +1,5 @@
 export const skin = defineSkin({
-    sprites: {},
+    sprites: {
+        note: SkinSpriteName.NoteHeadCyan,
+    },
 })
