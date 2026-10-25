@@ -22,8 +22,8 @@ test('exports parsed osu chart into a stable transport payload', async () => {
 test('rejects malformed chart payload input', () => {
   assert.throws(() => createSonolusChartPayload(null), TypeError);
   assert.throws(
-    () => createSonolusChartPayload({ objects: [], timingPoints: [] }),
-    /metadata|/
+    () => createSonolusChartPayload({ objects: [] }),
+    /objects and timingPoints/
   );
 });
 
