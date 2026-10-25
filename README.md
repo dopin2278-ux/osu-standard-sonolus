@@ -1,6 +1,6 @@
 # osu! Standard for Sonolus
 
-An open-source project exploring an **osu!standard-inspired rhythm-game engine for Sonolus**, with the long-term goal of making beatmaps from the official osu! website playable in Sonolus.
+An independent, **non-commercial osu!standard-inspired rhythm-game engine for Sonolus**, with the long-term goal of making beatmaps from the official osu! website playable in Sonolus. Non-commercial use and modification are permitted under the project's custom license; commercial use requires prior written permission from the original author, `@dopin2278-ux`.
 
 > **Status: Work in progress.** The beatmap parsing and core gameplay logic are under development. Full in-game integration, visual presentation, and end-to-end compatibility are not complete yet.
 
@@ -21,6 +21,14 @@ An open-source project exploring an **osu!standard-inspired rhythm-game engine f
 - A Sonolus.js template in `sonolus-engine/` for integration work.
 
 This is an early-stage project. The items above describe implemented development components, not a claim that the full engine is already playable in Sonolus.
+
+## License and attribution
+
+This project uses the custom [Osu Standard Sonolus Non-Commercial License](LICENSE), not a standard open-source license. You may use, modify, and redistribute the project for non-commercial purposes only, subject to the license terms. **Commercial use—including paid products, advertising, sponsorships, subscriptions, and in-app purchases—requires prior written permission from `@dopin2278-ux`.** When redistributing the project or a derivative work, retain the license and copyright notices and include this exact attribution in the README or equivalent project documentation:
+
+`Original creator: @dopin2278-ux`
+
+The license requires source availability and the same license terms for distributed derivative works. Third-party code, beatmaps, music, artwork, and trademarks are not automatically covered by this license.
 
 ## Project documentation
 
@@ -92,4 +100,6 @@ This is an independent community project and is not affiliated with or endorsed 
 
 ---
 
-Made by the community, with the goal of bringing an osu!standard-inspired experience to Sonolus.
+Original creator: @dopin2278-ux
+
+Independent community project; not affiliated with or endorsed by osu! or Sonolus.
