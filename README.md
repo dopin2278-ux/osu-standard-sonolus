@@ -1,0 +1,88 @@
+# osu! Standard for Sonolus
+
+An open-source project exploring an **osu!standard-inspired rhythm-game engine for Sonolus**, with the long-term goal of making beatmaps from the official osu! website playable in Sonolus.
+
+> **Status: Work in progress.** The beatmap parsing and core gameplay logic are under development. Full in-game integration, visual presentation, and end-to-end compatibility are not complete yet.
+
+## Project goals
+
+- Load and parse `.osu` beatmap files.
+- Convert beatmap hit objects into a normalized chart representation.
+- Build a maintainable gameplay core for timing, hit detection, scoring, and misses.
+- Integrate the core with the Sonolus.js engine template.
+- Explore a workflow for bringing legally obtained beatmaps from osu! into Sonolus while respecting the original game's and creators' terms.
+
+## Current implementation
+
+- `.osu` file loading with extension, file-size, and format-header validation.
+- Beatmap parsing and chart construction.
+- Initial gameplay and judgement logic.
+- Automated tests using Node.js's built-in test runner.
+- A Sonolus.js template in `sonolus-engine/` for integration work.
+
+This is an early-stage project. The items above describe implemented development components, not a claim that the full engine is already playable in Sonolus.
+
+## Technology
+
+- JavaScript / Node.js
+- Node.js built-in test runner
+- [Sonolus.js](https://github.com/Sonolus/sonolus.js) engine template
+
+## Getting started
+
+### Core project
+
+Requires a recent Node.js version.
+
+```bash
+npm install
+npm test
+```
+
+To parse the included demo beatmap:
+
+```bash
+npm run parse -- assets/maps/demo.osu
+```
+
+### Sonolus engine template
+
+```bash
+cd sonolus-engine
+npm install
+npm run build
+```
+
+The template build is a development check; it does not by itself mean the osu! gameplay integration is finished.
+
+## Roadmap
+
+- [x] Initial `.osu` loader and parser
+- [x] Initial chart model
+- [x] Core judgement and gameplay logic
+- [x] Automated tests for core components
+- [ ] Connect parsed charts to Sonolus level data
+- [ ] Render circles and other hit objects in-game
+- [ ] Handle player input and timing in Sonolus
+- [ ] Validate gameplay against real beatmaps
+- [ ] Document beatmap import and compatibility limitations
+
+## Contributing
+
+Contributions, testing, bug reports, and architecture feedback are welcome—especially around JavaScript, rhythm-game timing, beatmap formats, and Sonolus engine development.
+
+Before opening a pull request:
+
+1. Run `npm test`.
+2. Describe the change and how it was tested.
+3. Keep changes focused and avoid committing copyrighted beatmap audio or other assets without permission.
+
+If you're interested in helping, open an issue to discuss the feature or approach before starting large changes.
+
+## Legal and attribution
+
+This is an independent community project and is not affiliated with or endorsed by osu! or Sonolus. Please follow the applicable terms and licenses for osu!, Sonolus, beatmaps, music, and other assets. Only use content you have permission to use.
+
+---
+
+Made by the community, with the goal of bringing an osu!standard-inspired experience to Sonolus.
