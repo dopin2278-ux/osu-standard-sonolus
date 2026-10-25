@@ -22,6 +22,13 @@ An open-source project exploring an **osu!standard-inspired rhythm-game engine f
 
 This is an early-stage project. The items above describe implemented development components, not a claim that the full engine is already playable in Sonolus.
 
+## Project documentation
+
+- [Development roadmap](ROADMAP.md)
+- [Architecture overview](docs/ARCHITECTURE.md)
+- [Contributing guide](CONTRIBUTING.md)
+- [Open issues and planned work](https://github.com/dopin2278-ux/osu-standard-sonolus/issues)
+
 ## Technology
 
 - JavaScript / Node.js
