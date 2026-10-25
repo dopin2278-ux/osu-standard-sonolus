@@ -18,6 +18,7 @@ An independent, **non-commercial osu!standard-inspired rhythm-game engine for So
 - Beatmap parsing and chart construction.
 - Initial gameplay and judgement logic.
 - Automated tests using Node.js's built-in test runner.
+- A validated chart-payload bridge (`src/engine/sonolus-chart.js`) to prepare parsed osu! charts for the next Sonolus integration stage.
 - A Sonolus.js template in `sonolus-engine/` for integration work.
 
 This is an early-stage project. The items above describe implemented development components, not a claim that the full engine is already playable in Sonolus.
@@ -33,7 +34,7 @@ The license requires source availability and the same license terms for distribu
 ## Project documentation
 
 - [Authors and attribution](AUTHORS.md)
-
+- [Sonolus integration guide](docs/SONOLUS_INTEGRATION.md)
 - [Development roadmap](ROADMAP.md)
 - [Architecture overview](docs/ARCHITECTURE.md)
 - [Contributing guide](CONTRIBUTING.md)
@@ -78,7 +79,8 @@ The template build is a development check; it does not by itself mean the osu! g
 - [x] Initial chart model
 - [x] Core judgement and gameplay logic
 - [x] Automated tests for core components
-- [ ] Connect parsed charts to Sonolus level data
+- [x] Initial validated chart payload for the Sonolus integration boundary
+- [ ] Convert the transport payload into native Sonolus level data
 - [ ] Render circles and other hit objects in-game
 - [ ] Handle player input and timing in Sonolus
 - [ ] Validate gameplay against real beatmaps
