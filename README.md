@@ -32,6 +32,8 @@ The license requires source availability and the same license terms for distribu
 
 ## Project documentation
 
+- [Authors and attribution](AUTHORS.md)
+
 - [Development roadmap](ROADMAP.md)
 - [Architecture overview](docs/ARCHITECTURE.md)
 - [Contributing guide](CONTRIBUTING.md)
