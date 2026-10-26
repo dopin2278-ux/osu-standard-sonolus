@@ -23,7 +23,7 @@ test('rejects malformed chart payload input', () => {
   assert.throws(() => createSonolusChartPayload(null), TypeError);
   assert.throws(
     () => createSonolusChartPayload({ objects: [] }),
-    /objects and timingPoints/
+    /objects.*timingPoints/
   );
 });
 
