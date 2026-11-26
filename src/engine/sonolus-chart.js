@@ -38,6 +38,41 @@ function createSonolusChartPayload(chart) {
       throw new RangeError(`Координаты объекта ${object.id} выходят за границы osu! playfield`);
     }
 
+    let slider = null;
+
+    if (object.kind === 'slider') {
+      const source = object.slider;
+
+      if (
+        !source ||
+        typeof source.curveType !== 'string' ||
+        !Array.isArray(source.controlPoints) ||
+        !Number.isInteger(source.slides) ||
+        source.slides < 1 ||
+        !Number.isFinite(source.length) ||
+        source.length <= 0 ||
+        !Number.isFinite(source.duration) ||
+        source.duration < 0 ||
+        !Number.isFinite(source.endX) ||
+        !Number.isFinite(source.endY)
+      ) {
+        throw new TypeError(`Некорректные данные Slider объекта ${object.id}`);
+      }
+
+      slider = {
+        curveType: source.curveType,
+        controlPoints: source.controlPoints.map((point) => ({
+          x: point.x,
+          y: point.y,
+        })),
+        slides: source.slides,
+        length: source.length,
+        duration: source.duration,
+        endX: source.endX,
+        endY: source.endY,
+      };
+    }
+
     return {
       id: object.id,
       time: object.time,
@@ -45,7 +80,8 @@ function createSonolusChartPayload(chart) {
       y: object.y,
       kind: object.kind,
       type: Number.isInteger(object.type) ? object.type : null,
-      hitSound: Number.isInteger(object.hitSound) ? object.hitSound : 0
+      hitSound: Number.isInteger(object.hitSound) ? object.hitSound : 0,
+      slider,
     };
   });
 
@@ -58,7 +94,7 @@ function createSonolusChartPayload(chart) {
       time: point.time,
       beatLength: point.beatLength,
       meter: toFiniteNumber(point.meter, 4),
-      uninherited: Boolean(point.uninherited)
+      uninherited: Boolean(point.uninherited),
     };
   });
 
@@ -70,19 +106,20 @@ function createSonolusChartPayload(chart) {
       title: String(metadata.Title || ''),
       artist: String(metadata.Artist || ''),
       creator: String(metadata.Creator || ''),
-      version: String(metadata.Version || '')
+      version: String(metadata.Version || ''),
     },
     difficulty: {
       circleSize: toFiniteNumber(difficulty.CircleSize),
       overallDifficulty: toFiniteNumber(difficulty.OverallDifficulty),
       approachRate: toFiniteNumber(difficulty.ApproachRate),
-      hpDrainRate: toFiniteNumber(difficulty.HPDrainRate)
+      hpDrainRate: toFiniteNumber(difficulty.HPDrainRate),
+      sliderMultiplier: toFiniteNumber(difficulty.SliderMultiplier, 1.4),
     },
     timingPoints,
     objects,
     duration: Number.isFinite(chart.duration)
       ? Math.max(0, chart.duration)
-      : objects.reduce((maximum, object) => Math.max(maximum, object.time), 0)
+      : objects.reduce((maximum, object) => Math.max(maximum, object.time), 0),
   };
 }
 
