@@ -96,7 +96,7 @@ test('uses the last object time when chart duration is missing', () => {
     timingPoints: [],
     objects: [
       { id: 'a', time: 100, x: 0, y: 0, kind: 'circle' },
-      { id: 'b', time: 250, x: 512, y: 384, kind: 'slider' },
+      { id: 'b', time: 250, x: 512, y: 384, kind: 'circle' },
     ],
   });
 
