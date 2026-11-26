@@ -48,7 +48,7 @@ test('parses slider control points, repeats, and length', () => {
     '[HitObjects]',
     '100,150,1000,2,0,B|200:200|300:150,2,250',
     ''
-  ].join('\\n');
+  ].join('\n');
 
   const map = parseOsu(input);
   const slider = map.hitObjects[0];
@@ -70,7 +70,7 @@ test('rejects malformed slider parameters', () => {
     '[HitObjects]',
     '100,150,1000,2,0,B|200:200,0,250',
     ''
-  ].join('\\n');
+  ].join('\n');
 
   const map = parseOsu(input);
 
