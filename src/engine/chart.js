@@ -1,23 +1,87 @@
 'use strict';
 
-function getSliderDuration(beatmap, object) {
-  const slider = object.slider;
-  if (!slider) return 0;
-
-  const timingPoint = [...beatmap.timingPoints]
-    .filter((point) => point.uninherited !== false && point.time <= object.time && point.beatLength > 0)
+function getBaseBeatLength(beatmap, time) {
+  const point = [...beatmap.timingPoints]
+    .filter((item) => item.uninherited !== false && item.time <= time && item.beatLength > 0)
     .sort((a, b) => b.time - a.time)[0];
+  return point?.beatLength || 500;
+}
 
-  const beatLength = timingPoint?.beatLength || 500;
+function getSliderVelocityMultiplier(beatmap, time) {
+  const point = [...beatmap.timingPoints]
+    .filter((item) => item.uninherited === false && item.time <= time && item.beatLength < 0)
+    .sort((a, b) => b.time - a.time)[0];
+  return point ? Math.max(0.01, -100 / point.beatLength) : 1;
+}
+
+function getSliderDuration(beatmap, object) {
+  if (!object.slider) return 0;
+
+  const beatLength = getBaseBeatLength(beatmap, object.time);
   const sliderMultiplier = Number(beatmap.difficulty?.SliderMultiplier || 1.4);
+  const velocityMultiplier = getSliderVelocityMultiplier(beatmap, object.time);
 
   if (!Number.isFinite(sliderMultiplier) || sliderMultiplier <= 0) {
     throw new TypeError('Некорректный SliderMultiplier');
   }
 
-  const durationPerSlide = slider.length / (100 * sliderMultiplier) * beatLength;
+  return object.slider.length /
+    (100 * sliderMultiplier * velocityMultiplier) *
+    beatLength *
+    object.slider.slides;
+}
 
-  return durationPerSlide * slider.slides;
+function bezierPoint(points, t) {
+  const work = points.map((point) => ({ x: point.x, y: point.y }));
+
+  for (let level = work.length - 1; level > 0; level--) {
+    for (let index = 0; index < level; index++) {
+      work[index].x += (work[index + 1].x - work[index].x) * t;
+      work[index].y += (work[index + 1].y - work[index].y) * t;
+    }
+  }
+
+  return work[0];
+}
+
+function buildSliderPath(object) {
+  const slider = object.slider;
+  const points = [{ x: object.x, y: object.y }, ...slider.controlPoints];
+
+  if (slider.curveType === 'L' || points.length < 2) return points;
+
+  if (slider.curveType === 'B') {
+    const samples = Math.max(64, points.length * 64);
+    return Array.from({ length: samples + 1 }, (_, index) =>
+      bezierPoint(points, index / samples)
+    );
+  }
+
+  return points;
+}
+
+function getSliderEndpoint(object) {
+  const path = buildSliderPath(object);
+  const targetLength = object.slider.length;
+  let travelled = 0;
+
+  for (let index = 1; index < path.length; index++) {
+    const previous = path[index - 1];
+    const current = path[index];
+    const segment = Math.hypot(current.x - previous.x, current.y - previous.y);
+
+    if (travelled + segment >= targetLength) {
+      const ratio = segment === 0 ? 0 : (targetLength - travelled) / segment;
+      return {
+        x: previous.x + (current.x - previous.x) * ratio,
+        y: previous.y + (current.y - previous.y) * ratio,
+      };
+    }
+
+    travelled += segment;
+  }
+
+  return { ...path.at(-1) };
 }
 
 function buildChart(beatmap) {
@@ -49,8 +113,7 @@ function buildChart(beatmap) {
       slides: object.slider.slides,
       length: object.slider.length,
       duration: getSliderDuration(beatmap, object),
-      endX: object.slider.controlPoints.at(-1)?.x ?? object.x,
-      endY: object.slider.controlPoints.at(-1)?.y ?? object.y,
+      ...getSliderEndpoint(object),
     } : null;
 
     return {
@@ -77,8 +140,13 @@ function buildChart(beatmap) {
       ? Math.max(...objects.map((object) =>
           object.slider ? object.time + object.slider.duration : object.time
         ))
-      : 0
+      : 0,
   };
 }
 
-module.exports = { buildChart, getSliderDuration };
+module.exports = {
+  buildChart,
+  getSliderDuration,
+  getSliderVelocityMultiplier,
+  getSliderEndpoint,
+};
