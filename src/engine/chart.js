@@ -8,9 +8,20 @@ function getBaseBeatLength(beatmap, time) {
 }
 
 function getSliderVelocityMultiplier(beatmap, time) {
-  const point = [...beatmap.timingPoints]
-    .filter((item) => item.uninherited === false && item.time <= time && item.beatLength < 0)
+  const basePoint = [...beatmap.timingPoints]
+    .filter((item) => item.uninherited !== false && item.time <= time && item.beatLength > 0)
     .sort((a, b) => b.time - a.time)[0];
+
+  const baseTime = basePoint?.time ?? Number.NEGATIVE_INFINITY;
+  const point = [...beatmap.timingPoints]
+    .filter((item) =>
+      item.uninherited === false &&
+      item.time >= baseTime &&
+      item.time <= time &&
+      item.beatLength < 0
+    )
+    .sort((a, b) => b.time - a.time)[0];
+
   return point ? Math.max(0.01, -100 / point.beatLength) : 1;
 }
 
@@ -61,8 +72,17 @@ function buildSliderPath(object) {
 }
 
 function getSliderEndpoint(object) {
+  if (!object || !object.slider || !Array.isArray(object.slider.controlPoints)) {
+    throw new TypeError('Некорректные данные Slider для расчёта endpoint');
+  }
+
   const path = buildSliderPath(object);
-  const targetLength = object.slider.length;
+  const targetLength = Number(object.slider.length);
+
+  if (!Number.isFinite(targetLength) || targetLength <= 0 || path.length === 0) {
+    throw new TypeError('Некорректная длина Slider');
+  }
+
   let travelled = 0;
 
   for (let index = 1; index < path.length; index++) {
@@ -81,7 +101,13 @@ function getSliderEndpoint(object) {
     travelled += segment;
   }
 
-  return { ...path.at(-1) };
+  const endpoint = path[path.length - 1];
+
+  if (!endpoint || !Number.isFinite(endpoint.x) || !Number.isFinite(endpoint.y)) {
+    throw new TypeError('Не удалось вычислить endpoint Slider');
+  }
+
+  return { x: endpoint.x, y: endpoint.y };
 }
 
 function buildChart(beatmap) {
