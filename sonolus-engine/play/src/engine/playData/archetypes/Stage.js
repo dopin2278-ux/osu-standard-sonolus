@@ -11,10 +11,10 @@ export class Stage extends Archetype {
         const layout = new Rect({
             l: -screen.aspectRatio,
             r: screen.aspectRatio,
-            t: -0.92,
-            b: -0.88,
+            t: 1 - 0.02,
+            b: 1 + 0.02,
         })
 
-        skin.sprites.note.draw(layout, [0], 0)
+        skin.sprites.judgeLine.draw(layout, [0], touches.count ? 1 : 0.5)
     }
 }
