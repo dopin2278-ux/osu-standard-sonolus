@@ -11,5 +11,17 @@ export const playData = {
     buckets,
     archetypes,
 
-    globalResolver: (name) => eval(name),
+    globalResolver: (name) => {
+        const globals = {
+            skin,
+            effect,
+            particle,
+            buckets,
+            archetypes,
+        }
+
+        if (name in globals) return globals[name]
+
+        return eval(name)
+    },
 }
