@@ -45,6 +45,43 @@ test('sorts objects by hit time', () => {
   assert.equal(chart.objects[0].id, 'object-1');
 });
 
+test('preserves slider gameplay data', () => {
+  const chart = buildChart({
+    metadata: {},
+    difficulty: {},
+    timingPoints: [],
+    hitObjects: [
+      {
+        x: 100,
+        y: 150,
+        time: 1000,
+        kind: 'slider',
+        type: 2,
+        hitSound: 0,
+        slider: {
+          curveType: 'B',
+          controlPoints: [
+            { x: 200, y: 200 },
+            { x: 300, y: 150 }
+          ],
+          slides: 2,
+          length: 250
+        }
+      }
+    ]
+  });
+
+  assert.deepEqual(chart.objects[0].slider, {
+    curveType: 'B',
+    controlPoints: [
+      { x: 200, y: 200 },
+      { x: 300, y: 150 }
+    ],
+    slides: 2,
+    length: 250
+  });
+});
+
 test('rejects invalid chart input', () => {
   assert.throws(() => buildChart(null), TypeError);
 

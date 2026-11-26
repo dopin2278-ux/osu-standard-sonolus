@@ -31,7 +31,13 @@ function buildChart(beatmap) {
       kind: object.kind,
       type: object.type,
       hitSound: object.hitSound,
-      raw: object.raw
+      raw: object.raw,
+      slider: object.slider ? {
+        curveType: object.slider.curveType,
+        controlPoints: object.slider.controlPoints.map((point) => ({ ...point })),
+        slides: object.slider.slides,
+        length: object.slider.length,
+      } : null
     };
   });
 

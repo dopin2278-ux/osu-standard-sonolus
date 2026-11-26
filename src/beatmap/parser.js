@@ -93,6 +93,39 @@ function parseOsu(text) {
         raw: line
       };
 
+      if (object.type & 2) {
+        const sliderParams = String(fields[5] || '').split('|');
+        const curveType = sliderParams.shift() || '';
+        const controlPoints = sliderParams
+          .filter(Boolean)
+          .map((point) => {
+            const [px, py] = point.split(':').map(Number);
+            return { x: px, y: py };
+          })
+          .filter((point) => Number.isFinite(point.x) && Number.isFinite(point.y));
+
+        const slides = Number(fields[6]);
+        const length = Number(fields[7]);
+
+        if (
+          !curveType ||
+          !Number.isInteger(slides) ||
+          slides < 1 ||
+          !Number.isFinite(length) ||
+          length <= 0 ||
+          controlPoints.length === 0
+        ) {
+          continue;
+        }
+
+        object.slider = {
+          curveType,
+          controlPoints,
+          slides,
+          length
+        };
+      }
+
       if (
         !Number.isFinite(object.x) ||
         !Number.isFinite(object.y) ||
