@@ -78,7 +78,10 @@ test('preserves slider gameplay data', () => {
       { x: 300, y: 150 }
     ],
     slides: 2,
-    length: 250
+    length: 250,
+    duration: 1785.7142857142858,
+    endX: 300,
+    endY: 150
   });
 });
 
