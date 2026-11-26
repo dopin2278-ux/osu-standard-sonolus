@@ -78,8 +78,38 @@ test('preserves slider gameplay data', () => {
       { x: 300, y: 150 }
     ],
     slides: 2,
-    length: 250
+    length: 250,
+    duration: 1785.7142857142858,
+    endX: 300,
+    endY: 150
   });
+});
+
+test('calculates slider duration and endpoint', () => {
+  const chart = buildChart({
+    metadata: {},
+    difficulty: { SliderMultiplier: '1.4' },
+    timingPoints: [{ time: 0, beatLength: 500, uninherited: true }],
+    hitObjects: [{
+      x: 100,
+      y: 150,
+      time: 1000,
+      kind: 'slider',
+      type: 2,
+      hitSound: 0,
+      slider: {
+        curveType: 'B',
+        controlPoints: [{ x: 200, y: 200 }, { x: 300, y: 150 }],
+        slides: 2,
+        length: 280
+      }
+    }]
+  });
+
+  assert.equal(chart.objects[0].slider.duration, 2000);
+  assert.equal(chart.objects[0].slider.endX, 300);
+  assert.equal(chart.objects[0].slider.endY, 150);
+  assert.equal(chart.duration, 3000);
 });
 
 test('rejects invalid chart input', () => {
