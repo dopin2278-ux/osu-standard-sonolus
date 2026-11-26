@@ -43,6 +43,40 @@ test('recognizes sliders and spinners', () => {
   assert.equal(map.hitObjects[1].kind, 'spinner');
 });
 
+test('parses slider control points, repeats, and length', () => {
+  const input = [
+    '[HitObjects]',
+    '100,150,1000,2,0,B|200:200|300:150,2,250',
+    ''
+  ].join('\\n');
+
+  const map = parseOsu(input);
+  const slider = map.hitObjects[0];
+
+  assert.equal(slider.kind, 'slider');
+  assert.deepEqual(slider.slider, {
+    curveType: 'B',
+    controlPoints: [
+      { x: 200, y: 200 },
+      { x: 300, y: 150 }
+    ],
+    slides: 2,
+    length: 250
+  });
+});
+
+test('rejects malformed slider parameters', () => {
+  const input = [
+    '[HitObjects]',
+    '100,150,1000,2,0,B|200:200,0,250',
+    ''
+  ].join('\\n');
+
+  const map = parseOsu(input);
+
+  assert.equal(map.hitObjects.length, 0);
+});
+
 test('rejects non-string input', () => {
   assert.throws(() => parseOsu(null), TypeError);
 });
