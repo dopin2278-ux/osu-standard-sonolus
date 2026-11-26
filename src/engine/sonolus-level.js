@@ -7,7 +7,7 @@ const SONOLUS_ARCHETYPES = Object.freeze({
   slider: 'HitObject',
   spinner: 'HitObject',
   hold: 'HitObject',
-  unknown: 'HitObject'
+  unknown: 'HitObject',
 });
 
 function value(name, number) {
@@ -19,22 +19,13 @@ function createSonolusLevelData(payload) {
     throw new TypeError('Ожидается Sonolus chart payload');
   }
 
-  if (
-    !Array.isArray(payload.objects) ||
-    !Array.isArray(payload.timingPoints)
-  ) {
+  if (!Array.isArray(payload.objects) || !Array.isArray(payload.timingPoints)) {
     throw new TypeError('Payload должен содержать массивы objects и timingPoints');
   }
 
   const entities = [
-    {
-      archetype: 'Initialization',
-      data: []
-    },
-    {
-      archetype: 'Stage',
-      data: []
-    }
+    { archetype: 'Initialization', data: [] },
+    { archetype: 'Stage', data: [] },
   ];
 
   for (let index = 0; index < payload.objects.length; index++) {
@@ -60,26 +51,56 @@ function createSonolusLevelData(payload) {
       throw new RangeError(`Координаты объекта ${object.id} выходят за границы osu! playfield`);
     }
 
+    const data = [
+      value('time', object.time / 1000),
+      value('x', object.x),
+      value('y', object.y),
+      value('type', Number.isInteger(object.type) ? object.type : 0),
+      value('hitSound', Number.isInteger(object.hitSound) ? object.hitSound : 0),
+    ];
+
+    if (object.kind === 'slider') {
+      const slider = object.slider;
+
+      if (
+        !slider ||
+        !Number.isFinite(slider.duration) ||
+        slider.duration < 0 ||
+        !Number.isInteger(slider.slides) ||
+        slider.slides < 1 ||
+        !Number.isFinite(slider.length) ||
+        slider.length <= 0 ||
+        !Number.isFinite(slider.endX) ||
+        !Number.isFinite(slider.endY) ||
+        typeof slider.curveType !== 'string'
+      ) {
+        throw new TypeError(`Slider объект ${object.id} не содержит корректные runtime данные`);
+      }
+
+      data.push(
+        value('sliderDuration', slider.duration / 1000),
+        value('sliderSlides', slider.slides),
+        value('sliderLength', slider.length),
+        value('sliderEndX', slider.endX),
+        value('sliderEndY', slider.endY),
+        value('sliderCurveType', slider.curveType.charCodeAt(0)),
+      );
+    }
+
     entities.push({
       name: object.id,
       archetype: SONOLUS_ARCHETYPES[object.kind] || 'HitObject',
-      data: [
-        value('time', object.time / 1000),
-        value('x', object.x),
-        value('y', object.y),
-        value('type', Number.isInteger(object.type) ? object.type : 0),
-        value('hitSound', Number.isInteger(object.hitSound) ? object.hitSound : 0)
-      ]
+      data,
     });
   }
 
   return {
     bgmOffset: 0,
-    entities
+    entities,
   };
 }
 
 module.exports = {
   SONOLUS_ARCHETYPES,
-  createSonolusLevelData
+  createSonolusLevelData,
 };

@@ -19,6 +19,59 @@ test('exports parsed osu chart into a stable transport payload', async () => {
   assert.equal(payload.objects[0].time, 1000);
 });
 
+test('preserves slider data in the transport payload', () => {
+  const payload = createSonolusChartPayload({
+    metadata: {},
+    difficulty: {},
+    timingPoints: [],
+    objects: [{
+      id: 'slider-1',
+      time: 1000,
+      x: 100,
+      y: 150,
+      kind: 'slider',
+      type: 2,
+      hitSound: 0,
+      slider: {
+        curveType: 'B',
+        controlPoints: [{ x: 200, y: 200 }],
+        slides: 2,
+        length: 250,
+        duration: 1785.7142857142858,
+        endX: 275,
+        endY: 175,
+      },
+    }],
+  });
+
+  assert.deepEqual(payload.objects[0].slider, {
+    curveType: 'B',
+    controlPoints: [{ x: 200, y: 200 }],
+    slides: 2,
+    length: 250,
+    duration: 1785.7142857142858,
+    endX: 275,
+    endY: 175,
+  });
+  assert.equal(payload.difficulty.sliderMultiplier, 1.4);
+});
+
+test('rejects malformed slider transport data', () => {
+  assert.throws(() => createSonolusChartPayload({
+    metadata: {},
+    difficulty: {},
+    timingPoints: [],
+    objects: [{
+      id: 'slider-1',
+      time: 1000,
+      x: 100,
+      y: 150,
+      kind: 'slider',
+      slider: null,
+    }],
+  }), /Slider/);
+});
+
 test('rejects malformed chart payload input', () => {
   assert.throws(() => createSonolusChartPayload(null), TypeError);
   assert.throws(
@@ -32,7 +85,7 @@ test('rejects objects outside osu playfield', () => {
     metadata: {},
     difficulty: {},
     timingPoints: [],
-    objects: [{ id: 'bad', time: 10, x: 600, y: 20, kind: 'circle' }]
+    objects: [{ id: 'bad', time: 10, x: 600, y: 20, kind: 'circle' }],
   }), RangeError);
 });
 
@@ -43,8 +96,8 @@ test('uses the last object time when chart duration is missing', () => {
     timingPoints: [],
     objects: [
       { id: 'a', time: 100, x: 0, y: 0, kind: 'circle' },
-      { id: 'b', time: 250, x: 512, y: 384, kind: 'slider' }
-    ]
+      { id: 'b', time: 250, x: 512, y: 384, kind: 'circle' },
+    ],
   });
 
   assert.equal(payload.duration, 250);
