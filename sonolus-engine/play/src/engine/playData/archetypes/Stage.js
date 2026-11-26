@@ -1,3 +1,5 @@
+import { skin } from '../skin.js'
+
 export class Stage extends Archetype {
     spawnOrder() {
         return 1
