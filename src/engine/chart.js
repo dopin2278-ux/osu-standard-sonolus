@@ -1,5 +1,25 @@
 'use strict';
 
+function getSliderDuration(beatmap, object) {
+  const slider = object.slider;
+  if (!slider) return 0;
+
+  const timingPoint = [...beatmap.timingPoints]
+    .filter((point) => point.uninherited !== false && point.time <= object.time && point.beatLength > 0)
+    .sort((a, b) => b.time - a.time)[0];
+
+  const beatLength = timingPoint?.beatLength || 500;
+  const sliderMultiplier = Number(beatmap.difficulty?.SliderMultiplier || 1.4);
+
+  if (!Number.isFinite(sliderMultiplier) || sliderMultiplier <= 0) {
+    throw new TypeError('Некорректный SliderMultiplier');
+  }
+
+  const durationPerSlide = slider.length / (100 * sliderMultiplier) * beatLength;
+
+  return durationPerSlide * slider.slides;
+}
+
 function buildChart(beatmap) {
   if (!beatmap || typeof beatmap !== 'object') {
     throw new TypeError('Ожидаются данные карты osu!');
@@ -23,6 +43,16 @@ function buildChart(beatmap) {
       throw new TypeError(`Некорректный игровой объект №${index}`);
     }
 
+    const slider = object.slider ? {
+      curveType: object.slider.curveType,
+      controlPoints: object.slider.controlPoints.map((point) => ({ ...point })),
+      slides: object.slider.slides,
+      length: object.slider.length,
+      duration: getSliderDuration(beatmap, object),
+      endX: object.slider.controlPoints.at(-1)?.x ?? object.x,
+      endY: object.slider.controlPoints.at(-1)?.y ?? object.y,
+    } : null;
+
     return {
       id: `object-${index}`,
       time: object.time,
@@ -32,12 +62,7 @@ function buildChart(beatmap) {
       type: object.type,
       hitSound: object.hitSound,
       raw: object.raw,
-      slider: object.slider ? {
-        curveType: object.slider.curveType,
-        controlPoints: object.slider.controlPoints.map((point) => ({ ...point })),
-        slides: object.slider.slides,
-        length: object.slider.length,
-      } : null
+      slider,
     };
   });
 
@@ -49,9 +74,11 @@ function buildChart(beatmap) {
     timingPoints: beatmap.timingPoints.map((point) => ({ ...point })),
     objects,
     duration: objects.length > 0
-      ? objects[objects.length - 1].time
+      ? Math.max(...objects.map((object) =>
+          object.slider ? object.time + object.slider.duration : object.time
+        ))
       : 0
   };
 }
 
-module.exports = { buildChart };
+module.exports = { buildChart, getSliderDuration };
