@@ -1,3 +1,5 @@
+import { skin } from '../skin.js'
+
 export class HitObject extends Archetype {
     hasInput = true
 
