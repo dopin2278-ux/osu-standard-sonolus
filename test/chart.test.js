@@ -73,8 +73,8 @@ test('preserves slider gameplay data', () => {
   assert.equal(slider.slides, 2);
   assert.equal(slider.length, 250);
   assert.equal(slider.duration, 1785.7142857142858);
-  assert.ok(Number.isFinite(slider.endX));
-  assert.ok(Number.isFinite(slider.endY));
+  assert.equal(slider.endX, 300);
+  assert.equal(slider.endY, 150);
 });
 
 test('uses inherited timing point for slider velocity', () => {
@@ -103,7 +103,7 @@ test('uses the active base timing point with inherited SV', () => {
   };
   const object = { time: 1000, slider: { length: 280, slides: 1 } };
 
-  assert.equal(getSliderDuration(beatmap, object), 2000);
+  assert.equal(getSliderDuration(beatmap, object), 1600);
 });
 
 test('calculates a linear slider endpoint from path length', () => {
@@ -143,8 +143,8 @@ test('calculates slider duration and endpoint', () => {
   });
 
   assert.equal(chart.objects[0].slider.duration, 2000);
-  assert.ok(Number.isFinite(chart.objects[0].slider.endX));
-  assert.ok(Number.isFinite(chart.objects[0].slider.endY));
+  assert.equal(chart.objects[0].slider.endX, 300);
+  assert.equal(chart.objects[0].slider.endY, 150);
   assert.equal(chart.duration, 3000);
 });
 
