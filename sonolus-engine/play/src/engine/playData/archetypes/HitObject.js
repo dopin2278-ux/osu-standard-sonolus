@@ -1,7 +1,9 @@
+import { isUsed, markAsUsed } from '../input.js'
 import { skin } from '../skin.js'
 
 export class HitObject extends Archetype {
     hasInput = true
+    touchOrder = 1
 
     import = this.defineImport({
         time: { name: 'time', type: Number },
@@ -84,11 +86,14 @@ export class HitObject extends Archetype {
 
         for (const touch of touches) {
             if (!touch.started) continue
+            if (isUsed(touch)) continue
 
             const dx = touch.position.x - targetX
             const dy = touch.position.y - targetY
 
             if (Math.hypot(dx, dy) > 0.12) continue
+
+            markAsUsed(touch)
 
             const delta = touch.startTime - this.targetTime
 
