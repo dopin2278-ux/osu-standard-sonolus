@@ -35,3 +35,11 @@ jobs:
 
       - name: Run tests
         run: npm test
+
+      - name: Install Sonolus engine dependencies
+        working-directory: sonolus-engine
+        run: npm ci
+
+      - name: Build Sonolus play engine
+        working-directory: sonolus-engine
+        run: npx sonolus-cli --build ./play

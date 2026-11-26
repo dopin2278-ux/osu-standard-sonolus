@@ -1,4 +1,8 @@
+import { skin } from '../skin.js'
+
 export class HitObject extends Archetype {
+    hasInput = true
+
     import = this.defineImport({
         time: { name: 'time', type: Number },
         x: { name: 'x', type: Number },
@@ -21,6 +25,10 @@ export class HitObject extends Archetype {
 
     shouldSpawn() {
         return time.now >= this.spawnTime
+    }
+
+    initialize() {
+        this.result.accuracy = 0.135
     }
 
     updateParallel() {
@@ -58,9 +66,41 @@ export class HitObject extends Archetype {
         if (time.now < this.targetTime - 0.135) return
         if (time.now > this.targetTime + 0.135) return
 
+        const targetX = Math.remap(
+            0,
+            512,
+            -screen.aspectRatio,
+            screen.aspectRatio,
+            this.import.x,
+        )
+
+        const targetY = Math.remap(
+            384,
+            0,
+            -1,
+            1,
+            this.import.y,
+        )
+
         for (const touch of touches) {
             if (!touch.started) continue
 
+            const dx = touch.position.x - targetX
+            const dy = touch.position.y - targetY
+
+            if (Math.hypot(dx, dy) > 0.12) continue
+
+            const delta = touch.startTime - this.targetTime
+
+            if (Math.abs(delta) <= 0.045) {
+                this.result.judgment = Judgment.Perfect
+            } else if (Math.abs(delta) <= 0.09) {
+                this.result.judgment = Judgment.Great
+            } else {
+                this.result.judgment = Judgment.Good
+            }
+
+            this.result.accuracy = delta
             this.despawn = true
             return
         }

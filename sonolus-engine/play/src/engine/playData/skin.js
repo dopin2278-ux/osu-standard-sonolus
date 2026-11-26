@@ -1,5 +1,6 @@
 export const skin = defineSkin({
     sprites: {
-        note: SkinSpriteName.NoteHeadCyan,
+        note: 'Note Head Cyan',
+        judgeLine: 'Judgment Line',
     },
 })
