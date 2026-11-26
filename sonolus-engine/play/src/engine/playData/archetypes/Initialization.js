@@ -1,3 +1,5 @@
+import { archetypes } from './index.js'
+
 export class Initialization extends Archetype {
     preprocess() {
         ui.menu.set({
@@ -46,6 +48,7 @@ export class Initialization extends Archetype {
     }
 
     updateSequential() {
+        archetypes.InputManager.spawn({})
         this.despawn = true
     }
 }
