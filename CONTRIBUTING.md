@@ -4,13 +4,21 @@ Thanks for your interest in contributing to osu! Standard for Sonolus!
 
 This project is an early-stage, community-driven effort to build an osu!standard-inspired rhythm-game engine for Sonolus. Contributions of code, testing, documentation, and technical feedback are welcome.
 
-## License
+## License for the project
 
-This repository is released under the **MIT License**.
+The repository's original project code and documentation are released under the **MIT License** (SPDX: `MIT`).
 
-By contributing, you agree that your contribution may be distributed as part of this project under the repository's applicable MIT License terms, unless a different arrangement is agreed to in writing where legally applicable.
+The MIT License is permissive: covered material may be used, modified, copied, distributed, sublicensed, and used in commercial software, provided the required copyright and license notices are retained.
 
-The MIT License allows the project and its contributions to be used, modified, redistributed, sublicensed, and included in commercial software, subject to the license terms and any separate rights applicable to third-party materials.
+See [LICENSE](LICENSE) for the complete terms.
+
+## Contributions
+
+Unless a separate written agreement states otherwise, contributions submitted to this repository are intended to be distributed under the repository's MIT License terms.
+
+By submitting a contribution, you confirm that you have the right to submit it under those terms. You retain any copyright you may have in your original contribution; the project receives the permissions necessary to distribute that contribution as part of the project under the MIT License.
+
+Do not submit material that you do not have the right to redistribute.
 
 ## Before you start
 
@@ -68,4 +76,4 @@ Run `npm test` before submitting core-project changes. If you modify the Sonolus
 
 ## Third-party materials
 
-The MIT License applies to project material that the copyright holder has the right to license. It does not automatically grant rights to third-party code, Sonolus, osu!, beatmaps, music, artwork, trademarks, or other external materials. Make sure you have the necessary rights before redistributing such materials.
+The MIT License applies only to project material that the copyright holder has the right to license. It does not automatically grant rights to third-party code, Sonolus, osu!, beatmaps, music, artwork, trademarks, or other external materials. Make sure you have the necessary rights before redistributing such materials.
