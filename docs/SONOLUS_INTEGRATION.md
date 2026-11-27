@@ -4,6 +4,12 @@
 
 This document describes the first data bridge between the existing CommonJS osu! parser/core and the separate Sonolus.js template in `sonolus-engine/`. It is an intermediate transport format, **not yet a native Sonolus level-data encoder**. Playable in-game integration is still incomplete.
 
+## License
+
+The project code in this repository is released under the **MIT License**. This permits modification, redistribution, sublicensing, and commercial use of the covered project code, subject to the MIT License terms.
+
+This does **not** grant rights to third-party materials. Sonolus, osu!, beatmaps, music, artwork, trademarks, and third-party dependencies remain subject to their own licenses and terms.
+
 ## Current bridge
 
 Use `createSonolusChartPayload(chart)` from `src/engine/sonolus-chart.js` after loading a `.osu` file and calling `buildChart(beatmap)`.
