@@ -37,7 +37,7 @@ The MIT License is a permissive open-source license. For the material covered by
 
 The main condition is that the copyright notice and MIT permission notice are retained in copies or substantial portions of the software. The software is provided without warranty, as stated in the license.
 
-The complete license text is available in [LICENSE](LICENSE). The official MIT License text is also published by the [Open Source Initiative](https://opensource.org/license/mit). citeturn491536search0
+The complete license text is available in [LICENSE](LICENSE). The official MIT License text is also published by the [Open Source Initiative](https://opensource.org/license/mit).
 
 ### Copyright and third-party materials
 
