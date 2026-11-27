@@ -4,9 +4,15 @@ This document describes the current code boundaries and data flow. The Sonolus i
 
 ## License
 
-The repository is released under the **MIT License**. The license permits use, modification, redistribution, sublicensing, and commercial use of the project code, subject to the MIT License terms.
+The repository's original project code and documentation are released under the **MIT License** (SPDX: `MIT`).
 
-Third-party code, libraries, Sonolus, osu!, beatmaps, music, artwork, trademarks, and other external materials are not automatically covered by this repository's MIT License.
+For covered project material, MIT permits use, copying, modification, publication, distribution, sublicensing, and commercial use, subject to the license's notice requirement. The copyright and MIT permission notices must be retained in copies or substantial portions of the covered software.
+
+**Copyright (c) 2026 @dopin2278-ux**
+
+See [LICENSE](../LICENSE) for the complete license text.
+
+This license statement does not apply automatically to third-party code, libraries, Sonolus, osu!, beatmaps, music, artwork, trademarks, or other external materials.
 
 ## Data flow
 
