@@ -23,15 +23,29 @@ An independent, open-source **osu!standard-inspired rhythm-game engine for Sonol
 
 This is an early-stage project. The items above describe implemented development components, not a claim that the full engine is already playable in Sonolus.
 
-## License and attribution
+## License
 
-This project is released under the **MIT License**. You are free to use, copy, modify, publish, distribute, sublicense, and sell copies of the project, subject to the MIT License terms.
+This project is licensed under the **MIT License** (SPDX: `MIT`).
 
-The MIT License requires retaining the copyright and license notices in copies or substantial portions of the software.
+The MIT License is a permissive open-source license. For the material covered by this repository's copyright, it allows people to:
 
-**Original creator: @dopin2278-ux**
+- use the software for any purpose;
+- copy and modify it;
+- publish and distribute copies;
+- sublicense it;
+- sell copies or include it in commercial software.
 
-The MIT License applies only to material in this repository that the copyright holder has the right to license. Third-party code, Sonolus, osu!, beatmaps, music, artwork, trademarks, and other external materials remain subject to their own terms and permissions.
+The main condition is that the copyright notice and MIT permission notice are retained in copies or substantial portions of the software. The software is provided without warranty, as stated in the license.
+
+The complete license text is available in [LICENSE](LICENSE). The official MIT License text is also published by the [Open Source Initiative](https://opensource.org/license/mit). citeturn491536search0
+
+### Copyright and third-party materials
+
+**Copyright (c) 2026 @dopin2278-ux**
+
+The MIT License applies only to material in this repository that the copyright holder has the right to license. It does not automatically license third-party code, dependencies, Sonolus, osu!, beatmaps, music, artwork, trademarks, or other external materials. Those materials remain subject to their own licenses, permissions, and terms.
+
+The project's use of third-party material must not be interpreted as a claim of ownership over that material.
 
 ## Project documentation
 
@@ -40,6 +54,7 @@ The MIT License applies only to material in this repository that the copyright h
 - [Development roadmap](ROADMAP.md)
 - [Architecture overview](docs/ARCHITECTURE.md)
 - [Contributing guide](CONTRIBUTING.md)
+- [License text](LICENSE)
 - [Open issues and planned work](https://github.com/dopin2278-ux/osu-standard-sonolus/issues)
 
 ## Technology
@@ -98,7 +113,7 @@ Before opening a pull request:
 2. Describe the change and how it was tested.
 3. Keep changes focused and avoid committing copyrighted beatmap audio or other assets without permission.
 
-If you're interested in helping, open an issue to discuss the feature or approach before starting large changes.
+Contributions are accepted under the repository's applicable MIT License terms unless a separate written agreement states otherwise. See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
 ## Legal and attribution
 
@@ -106,6 +121,6 @@ This is an independent community project and is not affiliated with or endorsed 
 
 ---
 
-Original creator: @dopin2278-ux
+Copyright (c) 2026 @dopin2278-ux
 
 Independent community project; not affiliated with or endorsed by osu! or Sonolus.
