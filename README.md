@@ -1,6 +1,6 @@
 # osu! Standard for Sonolus
 
-An independent, **non-commercial osu!standard-inspired rhythm-game engine for Sonolus**, with the long-term goal of making beatmaps from the official osu! website playable in Sonolus. Non-commercial use and modification are permitted under the project's custom license; commercial use requires prior written permission from the original author, `@dopin2278-ux`.
+An independent, open-source **osu!standard-inspired rhythm-game engine for Sonolus**, with the long-term goal of making beatmaps from the official osu! website playable in Sonolus.
 
 > **Status: Work in progress.** The beatmap parsing and core gameplay logic are under development. Full in-game integration, visual presentation, and end-to-end compatibility are not complete yet.
 
@@ -25,11 +25,13 @@ This is an early-stage project. The items above describe implemented development
 
 ## License and attribution
 
-This project uses the custom [Osu Standard Sonolus Non-Commercial License](LICENSE), not a standard open-source license. You may use, modify, and redistribute the project for non-commercial purposes only, subject to the license terms. **Commercial use—including paid products, advertising, sponsorships, subscriptions, and in-app purchases—requires prior written permission from `@dopin2278-ux`.** When redistributing the project or a derivative work, retain the license and copyright notices and include this exact attribution in the README or equivalent project documentation:
+This project is released under the **MIT License**. You are free to use, copy, modify, publish, distribute, sublicense, and sell copies of the project, subject to the MIT License terms.
 
-`Original creator: @dopin2278-ux`
+The MIT License requires retaining the copyright and license notices in copies or substantial portions of the software.
 
-The license requires source availability and the same license terms for distributed derivative works. Third-party code, beatmaps, music, artwork, and trademarks are not automatically covered by this license.
+**Original creator: @dopin2278-ux**
+
+The MIT License applies only to material in this repository that the copyright holder has the right to license. Third-party code, Sonolus, osu!, beatmaps, music, artwork, trademarks, and other external materials remain subject to their own terms and permissions.
 
 ## Project documentation
 
