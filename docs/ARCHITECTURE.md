@@ -1,6 +1,12 @@
 # Architecture
 
-This document describes the current code boundaries. The Sonolus integration is not complete yet.
+This document describes the current code boundaries and data flow. The Sonolus integration is under active development.
+
+## License
+
+The repository is released under the **MIT License**. The license permits use, modification, redistribution, sublicensing, and commercial use of the project code, subject to the MIT License terms.
+
+Third-party code, libraries, Sonolus, osu!, beatmaps, music, artwork, trademarks, and other external materials are not automatically covered by this repository's MIT License.
 
 ## Data flow
 
@@ -24,7 +30,7 @@ src/engine/judgement.js
      evaluates hits, misses, score, combo, and accuracy
 ```
 
-The chart/game modules currently form a standalone core. Connecting this core to Sonolus level data and in-game rendering remains planned work.
+The chart/game modules currently form a standalone core. The project also contains an integration boundary for preparing chart data for Sonolus.
 
 ## Modules
 
@@ -74,4 +80,4 @@ When changing a module, update or add tests for the behavior being changed. Keep
 
 ## Current limitation
 
-This document describes the core Node.js implementation. It does not claim that the full game is playable in Sonolus yet. The next major integration step is to map the normalized chart into Sonolus level data and render objects in-game.
+This document describes the current Node.js implementation and integration boundary. It does not claim that every osu! Standard feature is already implemented or that every beatmap is playable in Sonolus. Continue to check the project's roadmap and integration documentation for current status.
