@@ -49,7 +49,7 @@ The project's use of third-party material must not be interpreted as a claim of 
 
 ## Project documentation
 
-- [Authors and attribution](AUTHORS.md)
+- [Authors, contributors and developer recognition](AUTHORS.md)
 - [Sonolus integration guide](docs/SONOLUS_INTEGRATION.md)
 - [Development roadmap](ROADMAP.md)
 - [Architecture overview](docs/ARCHITECTURE.md)
@@ -113,7 +113,7 @@ Before opening a pull request:
 2. Describe the change and how it was tested.
 3. Keep changes focused and avoid committing copyrighted beatmap audio or other assets without permission.
 
-Contributions are accepted under the repository's applicable MIT License terms unless a separate written agreement states otherwise. See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+Contributions are accepted under the repository's applicable MIT License terms unless a separate written agreement states otherwise. Contributors who make a substantial, meaningful contribution may be recognized as project developers. See [CONTRIBUTING.md](CONTRIBUTING.md) and [AUTHORS.md](AUTHORS.md) for details.
 
 ## Legal and attribution
 
