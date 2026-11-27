@@ -4,6 +4,14 @@ Thanks for your interest in contributing to osu! Standard for Sonolus!
 
 This project is an early-stage, community-driven effort to build an osu!standard-inspired rhythm-game engine for Sonolus. Contributions of code, testing, documentation, and technical feedback are welcome.
 
+## License
+
+This repository is released under the **MIT License**.
+
+By contributing, you agree that your contribution may be distributed as part of this project under the repository's applicable MIT License terms, unless a different arrangement is agreed to in writing where legally applicable.
+
+The MIT License allows the project and its contributions to be used, modified, redistributed, sublicensed, and included in commercial software, subject to the license terms and any separate rights applicable to third-party materials.
+
 ## Before you start
 
 - Check the README for the current project status and roadmap.
@@ -58,4 +66,6 @@ Please include:
 
 Run `npm test` before submitting core-project changes. If you modify the Sonolus template, also run its build and report the result.
 
-By contributing, you agree that your contributions may be distributed under the repository's applicable license. If no license has been added yet, please discuss licensing before contributing substantial code.
+## Third-party materials
+
+The MIT License applies to project material that the copyright holder has the right to license. It does not automatically grant rights to third-party code, Sonolus, osu!, beatmaps, music, artwork, trademarks, or other external materials. Make sure you have the necessary rights before redistributing such materials.
