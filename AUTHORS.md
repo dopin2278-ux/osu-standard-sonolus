@@ -6,11 +6,11 @@
 
 Original creator and project maintainer of **osu-standard-sonolus**, an independent project exploring an osu!standard-inspired rhythm-game engine for Sonolus.
 
-## Attribution requirements
+## License
 
-Redistribution of this project or a derivative work must follow the terms in the [LICENSE](LICENSE). In particular, the license requires retaining applicable copyright and attribution notices and including the following line in the README or equivalent prominent project documentation:
+This repository is released under the **MIT License**. The MIT License permits use, copying, modification, publication, distribution, sublicensing, and sale of copies of the software, subject to the license terms.
 
-`Original creator: @dopin2278-ux`
+The copyright and license notices must be retained in copies or substantial portions of the software.
 
 ## Contributors
 
