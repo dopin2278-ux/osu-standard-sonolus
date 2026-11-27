@@ -14,12 +14,12 @@ This roadmap tracks the development of an osu! Standard engine for Sonolus. Item
 - [x] Implement automatic misses and level completion.
 - [x] Add automated tests for core modules.
 - [x] Add regression tests for Slider parsing and chart data.
-- [ ] Document the current architecture and module responsibilities.
+- [x] Document the current architecture and module responsibilities.
 
 ## Phase 2 — Sonolus Integration
 
 - [x] Define and implement the chart → Sonolus transport data contract.
-- [x] Create Sonolus level entities from the normalized chart.
+- [x] Generate Sonolus level entities from the normalized chart.
 - [x] Build the Sonolus Play Engine successfully.
 - [x] Render and play Circle hit objects in Sonolus.
 - [x] Connect touch input to Circle judgement.
@@ -27,6 +27,7 @@ This roadmap tracks the development of an osu! Standard engine for Sonolus. Item
 - [x] Implement Circle timing windows: Perfect / Great / Good / Miss.
 - [ ] Implement approach circles and complete hit feedback.
 - [ ] Display score, combo, and accuracy in the Sonolus UI.
+- [ ] Wire generated level data into the shared Sonolus template and validate the complete level-loading path.
 
 ## Phase 3 — Slider Runtime
 
@@ -73,7 +74,7 @@ This roadmap tracks the development of an osu! Standard engine for Sonolus. Item
 - [ ] Add automated regression coverage for real-world beatmaps.
 - [ ] Capture screenshots or a short gameplay demonstration.
 - [ ] Publish an early playable release when integration is ready.
-- [ ] Prepare contribution and development documentation.
+- [x] Prepare contribution and development documentation.
 
 ## Current Priority
 
