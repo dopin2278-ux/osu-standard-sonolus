@@ -6,9 +6,15 @@ This document describes the first data bridge between the existing CommonJS osu!
 
 ## License
 
-The project code in this repository is released under the **MIT License**. This permits modification, redistribution, sublicensing, and commercial use of the covered project code, subject to the MIT License terms.
+The repository's original project code and documentation are released under the **MIT License** (SPDX: `MIT`).
 
-This does **not** grant rights to third-party materials. Sonolus, osu!, beatmaps, music, artwork, trademarks, and third-party dependencies remain subject to their own licenses and terms.
+For material covered by this repository's copyright, MIT permits use, modification, redistribution, sublicensing, and commercial use, subject to retention of the required copyright and license notices.
+
+**Copyright (c) 2026 @dopin2278-ux**
+
+See [LICENSE](../LICENSE) for the complete license text.
+
+The MIT License does **not** grant rights to third-party materials. Sonolus, osu!, beatmaps, music, artwork, trademarks, and third-party dependencies remain subject to their own licenses and terms.
 
 ## Current bridge
 
