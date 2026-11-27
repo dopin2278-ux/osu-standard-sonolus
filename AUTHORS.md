@@ -16,9 +16,13 @@ The MIT License permits use, copying, modification, publication, distribution, s
 
 See [LICENSE](LICENSE) for the complete license text.
 
-## Contributors
+## Contributors and developers
 
-Additional contributors may be acknowledged here as they make substantial contributions and wish to be listed. Being listed as a contributor does not, by itself, transfer ownership of another person's work or change the license terms.
+People who make substantial, meaningful contributions to the project may be listed in this document as project developers.
+
+Developer recognition is intended for contributors whose work materially advances the project, such as major gameplay features, significant Sonolus integration, architecture improvements, substantial bug fixes, extensive testing, or other major technical contributions.
+
+Being listed as a project developer is an acknowledgement of contribution. It does not transfer ownership of the project, change the MIT License, or imply that a contributor owns the repository as a whole.
 
 Contributors retain their copyright in original contributions where applicable. Unless a separate written agreement states otherwise, contributions submitted to this repository are intended to be distributed under the repository's MIT License terms.
 
