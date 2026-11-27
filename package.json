@@ -8,7 +8,7 @@
     "parse": "node src/server/index.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "SEE LICENSE IN LICENSE",
+  "author": "@dopin2278-ux",
+  "license": "MIT",
   "type": "commonjs"
 }
